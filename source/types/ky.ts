@@ -18,8 +18,22 @@ export interface KyInstance {
 	console.log(json);
 	//=> `{data: '🦄'}`
 	```
+
+	@example
+	```
+	import ky from 'ky';
+
+	interface Result {
+		data: string;
+	}
+
+	const json = await ky<Result>('https://example.com', {json: {foo: true}}).json();
+
+	console.log(json);
+	//=> `{data: '🦄'}`
+	```
 	*/
-	(url: Input, options?: Options): ResponsePromise;
+	<T = any>(url: Input, options?: Options): ResponsePromise<T>;
 
 	/**
 	Fetch the given `url` using the option `{method: 'get'}`.
@@ -27,7 +41,7 @@ export interface KyInstance {
 	@param url - `Request` object, `URL` object, or URL string.
 	@returns A promise with `Body` methods added.
 	*/
-	get: (url: Input, options?: Options) => ResponsePromise;
+	get: <T = any>(url: Input, options?: Options) => ResponsePromise<T>;
 
 	/**
 	Fetch the given `url` using the option `{method: 'post'}`.
@@ -35,7 +49,7 @@ export interface KyInstance {
 	@param url - `Request` object, `URL` object, or URL string.
 	@returns A promise with `Body` methods added.
 	*/
-	post: (url: Input, options?: Options) => ResponsePromise;
+	post: <T = any>(url: Input, options?: Options) => ResponsePromise<T>;
 
 	/**
 	Fetch the given `url` using the option `{method: 'put'}`.
@@ -43,7 +57,7 @@ export interface KyInstance {
 	@param url - `Request` object, `URL` object, or URL string.
 	@returns A promise with `Body` methods added.
 	*/
-	put: (url: Input, options?: Options) => ResponsePromise;
+	put: <T = any>(url: Input, options?: Options) => ResponsePromise<T>;
 
 	/**
 	Fetch the given `url` using the option `{method: 'delete'}`.
@@ -51,7 +65,7 @@ export interface KyInstance {
 	@param url - `Request` object, `URL` object, or URL string.
 	@returns A promise with `Body` methods added.
 	*/
-	delete: (url: Input, options?: Options) => ResponsePromise;
+	delete: <T = any>(url: Input, options?: Options) => ResponsePromise<T>;
 
 	/**
 	Fetch the given `url` using the option `{method: 'patch'}`.
@@ -59,7 +73,7 @@ export interface KyInstance {
 	@param url - `Request` object, `URL` object, or URL string.
 	@returns A promise with `Body` methods added.
 	*/
-	patch: (url: Input, options?: Options) => ResponsePromise;
+	patch: <T = any>(url: Input, options?: Options) => ResponsePromise<T>;
 
 	/**
 	Fetch the given `url` using the option `{method: 'head'}`.
@@ -67,7 +81,7 @@ export interface KyInstance {
 	@param url - `Request` object, `URL` object, or URL string.
 	@returns A promise with `Body` methods added.
 	*/
-	head: (url: Input, options?: Options) => ResponsePromise;
+	head: <T = any>(url: Input, options?: Options) => ResponsePromise<T>;
 
 	/**
 	Create a new Ky instance with complete new defaults.

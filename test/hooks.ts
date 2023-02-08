@@ -15,20 +15,20 @@ test('hooks can be async', async t => {
 	};
 
 	const responseJson = await ky
-		.post(server.url, {
-			json,
-			hooks: {
-				beforeRequest: [
-					async (request, options) => {
-						await delay(100);
-						const bodyJson = JSON.parse(options.body as string);
-						bodyJson.foo = false;
-						return new Request(request, {body: JSON.stringify(bodyJson)});
-					},
-				],
-			},
-		})
-		.json<typeof json>();
+		.post<typeof json>(server.url, {
+		json,
+		hooks: {
+			beforeRequest: [
+				async (request, options) => {
+					await delay(100);
+					const bodyJson = JSON.parse(options.body as string);
+					bodyJson.foo = false;
+					return new Request(request, {body: JSON.stringify(bodyJson)});
+				},
+			],
+		},
+	})
+		.json();
 
 	t.false(responseJson.foo);
 
@@ -61,19 +61,19 @@ test('beforeRequest hook allows modifications', async t => {
 	};
 
 	const responseJson = await ky
-		.post(server.url, {
-			json,
-			hooks: {
-				beforeRequest: [
-					(request, options) => {
-						const bodyJson = JSON.parse(options.body as string);
-						bodyJson.foo = false;
-						return new Request(request, {body: JSON.stringify(bodyJson)});
-					},
-				],
-			},
-		})
-		.json<typeof json>();
+		.post<typeof json>(server.url, {
+		json,
+		hooks: {
+			beforeRequest: [
+				(request, options) => {
+					const bodyJson = JSON.parse(options.body as string);
+					bodyJson.foo = false;
+					return new Request(request, {body: JSON.stringify(bodyJson)});
+				},
+			],
+		},
+	})
+		.json();
 
 	t.false(responseJson.foo);
 

@@ -1,5 +1,5 @@
 export type Mutable<T> = {
-	-readonly[P in keyof T]: T[P]
+	-readonly [P in keyof T]: T[P];
 };
 
 export type ObjectEntries<T> = T extends ArrayLike<infer U>

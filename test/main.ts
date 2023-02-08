@@ -690,14 +690,14 @@ test('parseJson option with response.json()', async t => {
 		response.json(json);
 	});
 
-	const response = await ky.get(server.url, {
+	const response = await ky.get<{hello: string; extra: string}>(server.url, {
 		parseJson: text => ({
 			...JSON.parse(text),
 			extra: 'extraValue',
 		}),
 	});
 
-	const responseJson = await response.json<{hello: string; extra: string}>();
+	const responseJson = await response.json();
 
 	expectTypeOf(responseJson).toMatchTypeOf({hello: 'world', extra: 'extraValue'});
 

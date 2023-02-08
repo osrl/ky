@@ -3,15 +3,13 @@ Returns a `Response` object with `Body` methods added for convenience. So you ca
 */
 import {KyResponse} from './response.js';
 
-export interface ResponsePromise extends Promise<KyResponse> {
+export interface ResponsePromise<T = any> extends Promise<KyResponse<T>> {
 	arrayBuffer: () => Promise<ArrayBuffer>;
 
 	blob: () => Promise<Blob>;
 
 	formData: () => Promise<FormData>;
 
-	// TODO: Use `json<T extends JSONValue>(): Promise<T>;` when it's fixed in TS.
-	// See https://github.com/microsoft/TypeScript/issues/15300 and https://github.com/sindresorhus/ky/pull/80
 	/**
 	Get the response body as JSON.
 
@@ -21,19 +19,8 @@ export interface ResponsePromise extends Promise<KyResponse> {
 
 	const json = await ky(…).json();
 	```
-
-	@example
-	```
-	import ky from 'ky';
-
-	interface Result {
-		value: number;
-	}
-
-	const result = await ky(…).json<Result>();
-	```
 	*/
-	json: <T = unknown>() => Promise<T>;
+	json: () => Promise<T>;
 
 	text: () => Promise<string>;
 }
