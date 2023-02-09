@@ -11,9 +11,9 @@
 		"url": "https://sindresorhus.com"
 	},
 	"type": "module",
-	"main": "./index.js",
-	"exports": "./index.js",
-	"types": "./index.d.ts",
+	"main": "./distribution/index.js",
+	"exports": "./distribution/index.js",
+	"types": "./distribution/index.d.ts",
 	"engines": {
 		"node": ">=14.16"
 	},
@@ -25,8 +25,7 @@
 		"prepare": "npm run build"
 	},
 	"files": [
-		"*.js",
-		"*.d.ts"
+		"distribution"
 	],
 	"keywords": [
 		"fetch",
