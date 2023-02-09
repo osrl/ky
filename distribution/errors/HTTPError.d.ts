@@ -4,5 +4,5 @@ export declare class HTTPError extends Error {
     request: Request;
     options: NormalizedOptions;
     constructor(response: Response, request: Request, options: NormalizedOptions);
-    json<F>(): Promise<F>;
+    json<F = any>(): Promise<F>;
 }
