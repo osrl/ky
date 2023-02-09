@@ -1,3 +1,4 @@
+import { response } from 'express';
 import type {NormalizedOptions} from '../types/options.js';
 
 // eslint-lint-disable-next-line @typescript-eslint/naming-convention
@@ -18,5 +19,9 @@ export class HTTPError extends Error {
 		this.response = response;
 		this.request = request;
 		this.options = options;
+	}
+
+	async json<F>(): Promise<F> {
+		return this.response.json() as F;
 	}
 }
