@@ -1,4 +1,3 @@
-import { response } from 'express';
 import type {NormalizedOptions} from '../types/options.js';
 
 // eslint-lint-disable-next-line @typescript-eslint/naming-convention
