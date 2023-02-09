@@ -19,4 +19,8 @@ export class HTTPError extends Error {
 		this.request = request;
 		this.options = options;
 	}
+
+	async json<F>(): Promise<F> {
+		return this.response.json() as F;
+	}
 }
