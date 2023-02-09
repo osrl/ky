@@ -20,7 +20,7 @@ export class HTTPError extends Error {
 		this.options = options;
 	}
 
-	async json<F>(): Promise<F> {
+	async json<F = any>(): Promise<F> {
 		return this.response.json() as F;
 	}
 }
