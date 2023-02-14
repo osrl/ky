@@ -1,4 +1,4 @@
-import type { NormalizedOptions } from '../types/options.js';
+import type { NormalizedOptions } from "../types/options.js";
 export declare class HTTPError extends Error {
     response: Response;
     request: Request;

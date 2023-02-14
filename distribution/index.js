@@ -1,7 +1,7 @@
 /*! MIT License © Sindre Sorhus */
-import { Ky } from './core/Ky.js';
-import { requestMethods, stop } from './core/constants.js';
-import { validateAndMerge } from './utils/merge.js';
+import { Ky } from "./core/Ky.js";
+import { requestMethods, stop } from "./core/constants.js";
+import { validateAndMerge } from "./utils/merge.js";
 const createInstance = (defaults) => {
     // eslint-disable-next-line @typescript-eslint/promise-function-async
     const ky = (input, options) => Ky.create(input, validateAndMerge(defaults, options));
@@ -16,6 +16,6 @@ const createInstance = (defaults) => {
 };
 const ky = createInstance();
 export default ky;
-export { HTTPError } from './errors/HTTPError.js';
-export { TimeoutError } from './errors/TimeoutError.js';
+export { HTTPError } from "./errors/HTTPError.js";
+export { TimeoutError } from "./errors/TimeoutError.js";
 //# sourceMappingURL=index.js.map
