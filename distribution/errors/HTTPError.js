@@ -1,10 +1,10 @@
 // eslint-lint-disable-next-line @typescript-eslint/naming-convention
 export class HTTPError extends Error {
     constructor(response, request, options) {
-        const code = (response.status || response.status === 0) ? response.status : '';
-        const title = response.statusText || '';
+        const code = response.status || response.status === 0 ? response.status : "";
+        const title = response.statusText || "";
         const status = `${code} ${title}`.trim();
-        const reason = status ? `status code ${status}` : 'an unknown error';
+        const reason = status ? `status code ${status}` : "an unknown error";
         super(`Request failed with ${reason}`);
         Object.defineProperty(this, "response", {
             enumerable: true,
@@ -24,13 +24,13 @@ export class HTTPError extends Error {
             writable: true,
             value: void 0
         });
-        this.name = 'HTTPError';
+        this.name = "HTTPError";
         this.response = response;
         this.request = request;
         this.options = options;
     }
     async json() {
-        return this.response.json();
+        return this.response.clone().json();
     }
 }
 //# sourceMappingURL=HTTPError.js.map
